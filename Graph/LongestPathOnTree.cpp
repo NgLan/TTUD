@@ -9,7 +9,6 @@ struct Edge {
 };
 
 vector<Edge> adj[MAXN]; // Danh sach ke
-int w[MAXN][MAXN]; // Ma tran trong so
 int d[MAXN]; // Khoang cach tu dinh goc (co the chon) den cac dinh khac
 int parent[MAXN]; // Luu parent cua moi nut trong DFS
 
@@ -22,7 +21,7 @@ void DFS(int v) {
 	for (Edge e : adj[v]) {
 		int u = e.destination;
         int w = e.weight;
-		if (d[u] < 0) { // Neu x chua duoc duyet
+		if (d[u] < 0) { // Neu u chua duoc duyet
 			d[u] = d[v] + w;
 			parent[u] = v;
 			DFS(u);
@@ -93,3 +92,12 @@ int main() {
 
     return 0;
 }
+
+// Test case
+//7 6
+//1 2 2
+//1 3 3
+//2 4 4
+//2 5 5
+//3 6 6
+//6 7 7
